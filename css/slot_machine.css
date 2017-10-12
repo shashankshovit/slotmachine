@@ -1,0 +1,46 @@
+#slot_machine {
+	border: 1px solid black;
+	margin: auto;
+}
+
+.slot-machine {
+	border: 1px dotted red;
+	margin: auto;
+}
+
+.slot-machine .header {
+    border: 1px solid green;
+    font-size: 20px;
+    font-weight: 900;
+    margin: 5px auto;
+}
+
+.slot-machine .slot-area {
+	border: 1px solid red;
+	margin: 5px auto;
+}
+
+.slot-machine .slot-area .slot {
+    border: 1px solid yellow;
+}
+
+.slot-machine .slot-area .slot img {
+    border: 1px solid green;
+    width: 50%;
+    max-width: 100px;
+}
+
+.slot-machine .button {
+    width: 100px;
+    height: 100px;
+    content: '';
+    text-align: center;
+    margin: 5px auto;
+    border-radius: 100%;
+    background-color: rgba(9, 159, 9, 0.89);
+    cursor: pointer;
+}
+
+.slot-machine .button:active {
+	background-color: rgba(141, 52, 35, 0.93);
+}
