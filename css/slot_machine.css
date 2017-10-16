@@ -1,11 +1,19 @@
+* {
+    text-align: center;
+}
+
 #slot_machine {
 	border: 1px solid black;
 	margin: auto;
+    max-width: 800px;
+    min-width: 425px;
 }
 
 .slot-machine {
 	border: 1px dotted red;
 	margin: auto;
+    position: relative;
+    height: 460px;
 }
 
 .slot-machine .header {
@@ -18,16 +26,42 @@
 .slot-machine .slot-area {
 	border: 1px solid red;
 	margin: 5px auto;
+    position: absolute;
+    left: 0;
+    right: 0;
 }
 
 .slot-machine .slot-area .slot {
     border: 1px solid yellow;
+    position: relative;
+    float: left;
 }
 
 .slot-machine .slot-area .slot img {
     border: 1px solid green;
-    width: 50%;
-    max-width: 100px;
+    left: 0;
+    margin: auto;
+    position: absolute;
+    right: 0;
+    width: 100px;
+}
+
+.slot-machine .slot-area .slot .cover {
+    width: 100px;
+    height: 100px;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.slot-machine .slot-area .slot .first {
+    top: 0;
+}
+
+.slot-machine .slot-area .slot .second {
+    top: 200px;
 }
 
 .slot-machine .button {
@@ -39,6 +73,10 @@
     border-radius: 100%;
     background-color: rgba(9, 159, 9, 0.89);
     cursor: pointer;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
 
 .slot-machine .button:active {
