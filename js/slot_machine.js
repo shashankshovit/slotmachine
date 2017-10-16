@@ -12,12 +12,13 @@ class MeraObj {
 }
 
 class Image extends MeraObj {
-	constructor(identity){
+	constructor(identity, position /* position of image in slot machine */){
 		super();
 		this.identity = identity;
-		this.top = 0;
+		this.top = position*100;
 		this.speed = 5;
-		this.allowedTop = -100;
+		this.allowedTop = 0;
+		// this.position = position;
 	}
 
 	getPath(){
@@ -26,7 +27,7 @@ class Image extends MeraObj {
 
 	setIdentity(identity){
 		this.identity = identity;
-		this.html.src = this.identity;
+		this.html.src = this.getPath();
 	}
 
 	resetSpeed(){
@@ -37,9 +38,18 @@ class Image extends MeraObj {
 	nextTop(){
 		this.top -= this.speed;
 		if(this.top <= this.allowedTop) {
-			this.top = 100;
+			this.top = 200 - this.speed;
+			this.identity = this.nextIdentity();
 		}
 		return this.top;
+	}
+
+	nextIdentity(){
+		this.identity += 2;
+		if(this.identity > 9) {
+			this.identity = this.identity % 2;
+		}
+		return this.identity;
 	}
 
 	update(){
@@ -53,7 +63,7 @@ class Image extends MeraObj {
 		this.html = document.createElement("img");
 		// image.setAttribute("src", this.path);
 		this.html.setAttribute("src", this.getPath());
-		this.html.style.top = this.identity + 100 + "px";
+		this.html.style.top = this.top + "px";
 		// this.html.append(image);
 		return this.html;
 	}
@@ -111,11 +121,11 @@ class Slot extends MeraObj {
 		this.html.setAttribute("class", "slot slot"+this.identity);
 		this.html.style.width = this.width+"%";
 		let image = '';
-		image = new Image(this.previousImageCounter());		
+		image = new Image(this.previousImageCounter(), 0);		
 		this.add(image);
-		image = new Image(this.currentImageCounter());
-		this.add(image);
-		image = new Image(this.nextImageCounter());
+		image = new Image(this.currentImageCounter(), 1);
+		// this.add(image);
+		// image = new Image(this.nextImageCounter(), 2);
 		this.add(image);
 		let cover = '';
 		cover = document.createElement("div");
